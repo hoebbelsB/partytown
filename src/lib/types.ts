@@ -545,6 +545,15 @@ export interface PartytownConfig {
    * ```
    */
   nonce?: string;
+  /**
+   * The fallbackTimeout specifies the amount of time partytown should try to initialize its
+   * environment. After the `DOMContentLoadEvent` partytown tries to bootstrap. If it didn't happen
+   * until the timeout has expired, it'll run a fallback mechanism to run all scripts on the main
+   * thread which were determined to run in the worker.
+   *
+   * It defaults to 9999ms
+   */
+  fallbackTimeout?: number;
 }
 
 export type PartytownInternalConfig = Omit<PartytownConfig, 'loadScriptsOnMainThread'> & {
