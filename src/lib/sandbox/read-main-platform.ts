@@ -84,7 +84,9 @@ export const readMainInterfaces = () => {
         return false;
       }
       const constructorName = getConstructorName(elm);
-      return (constructorName !== 'HTMLUnknownElement' || elm.nodeName.toUpperCase() !== 'UNKNOWN');
+      return !(
+        constructorName === 'HTMLUnknownElement' && elm.nodeName.toUpperCase() !== 'UNKNOWN'
+      );
     })
     .map((elm) => [elm]);
 
