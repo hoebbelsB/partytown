@@ -44,6 +44,7 @@ export interface PartytownConfig {
     sandboxParent?: string;
     // (undocumented)
     set?: SetHook;
+    swImportScripts?: string[];
     swPath?: string;
 }
 

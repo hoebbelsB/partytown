@@ -525,6 +525,10 @@ export interface PartytownConfig {
    */
   swPath?: string;
   /**
+   * Path to additional service workers you want to include with the partytown serviceworker
+   */
+  swImportScripts?: string[];
+  /**
    * The nonce property may be set on script elements created by Partytown.
    * This should be set only when dealing with content security policies
    * and when the use of `unsafe-inline` is disabled (using `nonce-*` instead).

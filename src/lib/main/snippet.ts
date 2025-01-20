@@ -49,8 +49,14 @@ export function snippet(
             loadSandbox(1);
           } else if (nav.serviceWorker) {
             // service worker support
+            const url = new URL(
+              `${location.origin}${libPath}${config!.swPath || 'partytown-sw.js'}`
+            );
+            if (config!.swImportScripts?.length > 0) {
+              url.searchParams.append('importScripts', config!.swImportScripts!.join(','));
+            }
             nav.serviceWorker
-              .register(libPath + (config!.swPath || 'partytown-sw.js'), {
+              .register(url.href.replace(location.origin, ''), {
                 scope: libPath,
               })
               .then(function (swRegistration) {
